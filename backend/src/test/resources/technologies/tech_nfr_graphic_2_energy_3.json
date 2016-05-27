@@ -1,0 +1,11 @@
+{
+	"id": "tech_nfr_graphic_2_energy_3",
+	"properties": [
+		{"criterionId": "nfr", "ratedValues": [
+			{"id": "graphic_performance",
+			"value": 2},
+			{"id": "energy_efficiency",
+			"value": 3}
+		]}	
+	]
+}

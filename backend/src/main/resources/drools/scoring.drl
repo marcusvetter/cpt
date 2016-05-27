@@ -1,0 +1,92 @@
+import org.crossplatform.backend.model.technology.Technology;
+import org.crossplatform.backend.model.technology.TechnologyProperty;
+import org.crossplatform.backend.model.technology.RatedValue;
+import org.crossplatform.backend.model.technology.StrongValue;
+import org.crossplatform.backend.model.criterion.Criterion;
+import org.crossplatform.backend.model.criterion.CriterionValue;
+import org.crossplatform.backend.model.criterion.UserScoredCriterion;
+import org.crossplatform.backend.model.technology.ScoredTechnology;
+
+// ---------------------------------------------------------------------------------------------------------------------------
+// The rule model (scoring):
+// - If a user scored criterion with a strong value matches a technology property (strong value) of a technology,
+// this technology will receive 25 points. (Rule #1)
+// - If a user scored criterion with a rated value (value = x) matches a technology property (rated value, value = y) of a technology,
+// this technology will receive  x * y points. (Rule #2)
+// - If a user scored criterion with a rated value (value = x) matches a technology property (strong value) of a technology,
+// this technology will receive x * 5 points. (Rule #3)
+// ---------------------------------------------------------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------------------------------------------------------
+rule "#1: User Scored Criterion (Strong Value) and Technology Property (Strong Value)"
+// ---------------------------------------------------------------------------------------------------------------------------
+when
+	// Join the technology and the scored technology via the technology id
+	$tech			: Technology($techId : id, $techProps : properties)
+	$scoredTech		: ScoredTechnology(technologyId == $techId)		
+
+	// Join the technology property with the technology, the criterion and the criterion value
+	$techProp		: TechnologyProperty($tpCritId : criterionId, $tpStrongValues : strongValues, this memberOf $techProps)
+	$crit			: Criterion($critId : id == $tpCritId, $critValues : values)
+	$critValue		: CriterionValue(this memberOf $critValues, $critValueId : id)
+	$strongValue	: StrongValue(this memberOf $tpStrongValues, id == $critValueId)
+	
+	// Join the user scored criterion with the criterion and the criterion value
+	$usc			: UserScoredCriterion(criterionId == $critId, criterionValueId == $critValueId)
+	
+	// Finally restrict the rule to user scored values with strong values
+	eval($usc.isStrongValue())
+
+then
+	$scoredTech.addScoreElement($critId, $critValueId, 25, 25);
+end
+
+
+// ---------------------------------------------------------------------------------------------------------------------------
+rule "#2: User Scored Criterion (Rated Value) and Technology Property (Rated Value)"
+// ---------------------------------------------------------------------------------------------------------------------------
+when
+	// Join the technology and the scored technology via the technology id
+	$tech			: Technology($techId : id, $techProps : properties)
+	$scoredTech		: ScoredTechnology(technologyId == $techId)		
+
+	// Join the technology property with the technology, the criterion and the criterion value
+	$techProp		: TechnologyProperty($tpCritId : criterionId, $tpRatedValues : ratedValues, this memberOf $techProps)
+	$crit			: Criterion($critId : id == $tpCritId, $critValues : values)
+	$critValue		: CriterionValue(this memberOf $critValues, $critValueId : id)
+	$ratedValue		: RatedValue(this memberOf $tpRatedValues, id == $critValueId, $ratedValueValue : value)
+	
+	// Join the user scored criterion with the criterion and the criterion value
+	$usc			: UserScoredCriterion(criterionId == $critId, criterionValueId == $critValueId, $uscRatedValue : ratedValue)
+	
+	// Finally restrict the rule to user scored values with rated values
+	eval(false == $usc.isStrongValue())
+
+then
+	$scoredTech.addScoreElement($critId, $critValueId, $uscRatedValue * $ratedValueValue, $uscRatedValue * 5);
+end
+
+
+// ---------------------------------------------------------------------------------------------------------------------------
+rule "#3: User Scored Criterion (Rated Value) and Technology Property (Strong Value)"
+// ---------------------------------------------------------------------------------------------------------------------------
+when
+	// Join the technology and the scored technology via the technology id
+	$tech			: Technology($techId : id, $techProps : properties)
+	$scoredTech		: ScoredTechnology(technologyId == $techId)		
+
+	// Join the technology property with the technology, the criterion and the criterion value
+	$techProp		: TechnologyProperty($tpCritId : criterionId, $tpStrongValues : strongValues, this memberOf $techProps)
+	$crit			: Criterion($critId : id == $tpCritId, $critValues : values)
+	$critValue		: CriterionValue(this memberOf $critValues, $critValueId : id)
+	$strongValue	: StrongValue(this memberOf $tpStrongValues, id == $critValueId)
+	
+	// Join the user scored criterion with the criterion and the criterion value
+	$usc			: UserScoredCriterion(criterionId == $critId, criterionValueId == $critValueId, $uscRatedValue : ratedValue)									
+	
+	// Finally restrict the rule to user strong user scored values
+	eval(false == $usc.isStrongValue())
+
+then
+	$scoredTech.addScoreElement($critId, $critValueId, $uscRatedValue * 5, $uscRatedValue * 5);
+end

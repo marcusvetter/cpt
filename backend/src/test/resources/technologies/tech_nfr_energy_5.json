@@ -1,0 +1,9 @@
+{
+	"id": "tech_nfr_energy_5",
+	"properties": [
+		{"criterionId": "nfr", "ratedValues": [
+			{"id": "energy_efficiency",
+			"value": 5}
+		]}	
+	]
+}

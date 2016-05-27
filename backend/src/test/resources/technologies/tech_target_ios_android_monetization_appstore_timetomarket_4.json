@@ -1,0 +1,10 @@
+{
+	"id": "tech_target_ios_android_monetization_appstore_timetomarket_4",
+	"properties": [
+		{"criterionId": "target_os", "strongValues": [{"id": "ios"}, {"id": "android"}]},
+		{"criterionId": "monetization", "strongValues": [{"id": "app_store_availablity"}], "ratedValues": [
+			{"id": "time_to_market",
+			"value": 4}
+		]}
+	]
+}

@@ -1,0 +1,60 @@
+<nav class="navbar navbar-fixed-top cpt-header-desktop-nav" role="navigation">
+	<div class="container-fluid">
+		<div class="navbar-header">
+		
+			<button type="button" class="navbar-toggle pull-left cpt-header-desktop-menu-button"
+				data-toggle="collapse" data-target="#cpt-desktop-menu-collapse">
+				<div></div>
+				<div></div>
+				<div></div>
+			</button>
+			<div class="cpt-header-desktop-brand" fast-click="openPartial('home')">Cross-platform.org</div>
+		</div>
+
+		<div class="collapse navbar-collapse cpt-header-desktop-menu-container" id="cpt-desktop-menu-collapse">
+			<ul class="nav navbar-nav">
+				<li>
+					<div class="cpt-menu-item"
+						fast-click="openPartial('technologies')"
+						ng-mouseenter="hoveredTechnologies = true"
+						ng-mouseleave="hoveredTechnologies = false"
+						ng-class="{'cpt-menu-item-hover': hoveredTechnologies || activeTechnologies}"
+						id="cpt-test-menu-technologies">
+						Technologies</div>
+				</li>
+				<li>
+					<div class="cpt-menu-item"
+						fast-click="openPartial('criteria')"
+						ng-mouseenter="hoveredCriteria = true"
+						ng-mouseleave="hoveredCriteria = false"
+						ng-class="{'cpt-menu-item-hover': hoveredCriteria || activeCriteria}"
+						id="cpt-test-menu-criteria">
+						Criteria</div>
+				</li>
+				<li>
+					<div class="cpt-menu-item"
+						fast-click="openPartial('decision-tool')"
+						ng-mouseenter="hoveredDecisionTool = true"
+						ng-mouseleave="hoveredDecisionTool = false"
+						ng-class="{'cpt-menu-item-hover': hoveredDecisionTool || activeDecisionTool}"
+						id="cpt-test-menu-decision-tool">
+						Decision Tool</div>
+				</li>
+				<li>
+					<div class="cpt-menu-item"
+						fast-click="openPartial('profiling')"
+						ng-mouseenter="hoveredProfiling = true"
+						ng-mouseleave="hoveredProfiling = false"
+						ng-class="{'cpt-menu-item-hover': hoveredProfiling || activeProfiling}">
+						Profiling
+						<div class="pull-right" style="margin-top: -13px; margin-left: 5px;" ng-show="profileNameMenu">
+							<span class="label label-success" style="background-color: green;">{{ profileNameMenu }}</span>
+						</div>
+					</div>
+				</li>
+
+			</ul>
+
+		</div>
+	</div>
+</nav>

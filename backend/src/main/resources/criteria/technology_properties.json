@@ -1,0 +1,15 @@
+{
+	"id": "technology_properties",
+	"name": "Technology properties",
+	"sort": 3,
+	"description": "Please select the desired technology properties.",
+	"values":  [
+		{"id": "open_source", "name": "Open source", "scoreType": ["strong", "rateable"]},
+		{"id": "stability_maturity_level", "name": "Stability and maturity level", "scoreType": ["rateable"]},
+		{"id": "documentation", "name": "Documentation", "scoreType": ["rateable"]},
+		{"id": "support_availability", "name": "Support availability", "scoreType": ["rateable"]},
+		{"id": "ide_windows", "name": "IDE for Windows", "scoreType": ["strong", "rateable"]},
+		{"id": "ide_mac_os_x", "name": "IDE for Mac OS X", "scoreType": ["strong", "rateable"]},
+		{"id": "ide_linux", "name": "IDE for Linux", "scoreType": ["strong", "rateable"]}
+	]
+}

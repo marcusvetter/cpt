@@ -1,0 +1,11 @@
+{
+	"id": "monetization",
+	"name": "Monetization",
+	"sort": 5,
+	"description": "Please select the desired monetization.",
+	"values":  [
+		{"id": "app_store_availablity", "name": "App store availability", "scoreType": ["strong", "rateable"]},
+		{"id": "in_app_purchases", "name": "In-App purchases", "scoreType": ["strong", "rateable"]},
+		{"id": "time_to_market", "name": "Time-to-market", "scoreType": ["rateable"]}
+	]
+}

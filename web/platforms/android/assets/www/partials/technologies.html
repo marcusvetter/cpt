@@ -1,0 +1,117 @@
+<!-- Space on the left site for large screens -->
+<div class="visible-md visible-lg pull-left"
+	style="width: 80px; height: 1px; display: block;"></div>
+
+<div class="pull-left" style="width: 100%; max-width: 800px; margin-bottom: 50px;">
+	<div ng-repeat="technology in technologies"
+		class="cpt-technology-container">
+		<div class="cpt-technology-title">
+			<span>{{ technology.name }}</span>
+		</div>
+
+		<div class="cpt-technology-content">
+
+			<div class="row cpt-technology-content-row" ng-show="technology.producer">
+				<div class="col-xs-2">Producer:</div>
+				<div class="col-xs-10">{{ technology.producer }}</div>
+			</div>
+
+			<div class="row cpt-technology-content-row" ng-show="technology.description">
+				<div class="col-xs-2">Description:</div>
+				<div class="col-xs-10">{{ technology.description }}</div>
+			</div>
+
+			<div class="row cpt-technology-content-row" ng-show="technology.version">
+				<div class="col-xs-2">Version:</div>
+				<div class="col-xs-10">{{ technology.version }}</div>
+			</div>
+
+			<div class="row cpt-technology-content-row" ng-show="technology.mechanism">
+				<div class="col-xs-2">Mechanism:</div>
+				<div class="col-xs-10">{{ technology.mechanism }}</div>
+			</div>
+
+			<div class="row cpt-technology-content-row" ng-show="technology.website">
+				<div class="col-xs-2">Website:</div>
+				<div class="col-xs-10"><a href="{{ 'http://' + technology.website }}" target="_blank">{{ technology.website }}</a></div>
+			</div>
+
+			<div class="row cpt-technology-content-row" ng-show="technology.license">
+				<div class="col-xs-2">License:</div>
+				<div class="col-xs-10">{{ technology.license }}</div>
+			</div>
+
+			<div class="row cpt-technology-content-row" ng-show="technology.costs">
+				<div class="col-xs-2">Costs:</div>
+				<div class="col-xs-10">{{ technology.costs }}</div>
+			</div>
+
+			<div class="row cpt-technology-content-row" ng-show="technology.devLanguage">
+				<div class="col-xs-2">Development language:</div>
+				<div class="col-xs-10">{{ technology.devLanguage }}</div>
+			</div>
+
+			<div class="row cpt-technology-further-properties-row">
+				<div class="col-xs-12">
+					<button class="btn btn-block btn-default"
+						fast-click="toggleProperties(technology)">
+						<span ng-show="!technology.showProperties"
+							class="pull-left glyphicon glyphicon-chevron-down cpt-technology-show-further-properties-icon"></span>
+						<span ng-show="!technology.showProperties"
+							class="pull-left cpt-technology-show-further-properties">Show
+							further properties</span> <span ng-show="technology.showProperties"
+							class="pull-left glyphicon glyphicon-chevron-up cpt-technology-hide-further-properties-icon"></span>
+						<span ng-show="technology.showProperties"
+							class="pull-left cpt-technology-hide-further-properties">Hide
+							further properties</span>
+					</button>
+				</div>
+			</div>
+
+			<div class="row cpt-technology-content-row"
+				ng-repeat="prop in technology.properties"
+				ng-if="technology.showProperties">
+				<div class="col-xs-2">{{prop.criterionName }}:</div>
+				<div class="col-xs-10">
+					<div ng-repeat="strongValue in prop.strongValues"
+						class="pull-left cpt-technology-strong-value">
+						<div class="pull-left">
+							{{ strongValue.name }}
+						</div>
+						<div class="pull-right" style="margin: -5px -5px -5px 5px; color: black;">
+							<button style="border: 0px;" ng-show="strongValue.referenceType === 'DOC'" popover="This estimation is based on a document. Click to open it." popover-trigger="mouseenter" class="btn btn-default btn-md" fast-click="openURL(strongValue.referenceLink)">
+								<span class="glyphicon glyphicon-book"></span>
+							</button>
+							<button style="border: 0px;" ng-show="strongValue.referenceType === 'WEB'" popover="This estimation is based on a website. Click to open it." popover-trigger="mouseenter" class="btn btn-default btn-md" fast-click="openURL(strongValue.referenceLink)">
+								<span class="glyphicon glyphicon-globe"></span>
+							</button>
+							<button style="border: 0px;" ng-show="strongValue.referenceType === 'SUBJECTIVE'" popover="This is a subjective estimation without a reference." popover-trigger="mouseenter" class="btn btn-default btn-md">
+								<span class="glyphicon glyphicon-user"></span>
+							</button>
+						</div>
+					</div>
+					<div ng-repeat="ratedValue in prop.ratedValues"
+						class="pull-left cpt-technology-rated-value"
+						ng-class="{'cpt-technology-rated-value-1': ratedValue.value == 1, 'cpt-technology-rated-value-2': ratedValue.value == 2, 'cpt-technology-rated-value-3': ratedValue.value == 3, 'cpt-technology-rated-value-4': ratedValue.value == 4, 'cpt-technology-rated-value-5': ratedValue.value == 5}">
+						<div class="pull-left">{{
+						ratedValue.name }}: {{ ratedValue.value }} / 5
+						</div>
+						<div class="pull-right" style="margin: -5px -5px -5px 5px; color: black;">
+							<button style="border: 0px;" ng-show="ratedValue.referenceType === 'DOC'" popover="This estimation is based on a document. Click to open it." popover-trigger="mouseenter" class="btn btn-default btn-md" fast-click="openURL(ratedValue.referenceLink)">
+								<span class="glyphicon glyphicon-book"></span>
+							</button>
+							<button style="border: 0px;" ng-show="ratedValue.referenceType === 'WEB'" popover="This estimation is based on a website. Click to open it." popover-trigger="mouseenter" class="btn btn-default btn-md" fast-click="openURL(ratedValue.referenceLink)">
+								<span class="glyphicon glyphicon-globe"></span>
+							</button>
+							<button style="border: 0px" ng-show="ratedValue.referenceType === 'SUBJECTIVE'" popover="This is a subjective estimation without a reference." popover-trigger="mouseenter" class="btn btn-default btn-md">
+								<span class="glyphicon glyphicon-user"></span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+</div>

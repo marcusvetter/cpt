@@ -1,0 +1,52 @@
+<!-- Ranking List -->
+<div class="cpt-decision-ranking-container">
+
+	<div class="pull-right" style="padding: 5px; height: 45px;">
+		<butto ng-show="anyTechnologyViolatesACriterion" class="btn btn-default" fast-click="reqViolationFilter = !reqViolationFilter" ng-class="{'cpt-decision-ranking-list-filter': reqViolationFilter}"><span ng-class="{'cpt-decision-ranking-list-filter-sign-off': !reqViolationFilter, 'cpt-decision-ranking-list-filter-sign-on': reqViolationFilter}" class="glyphicon glyphicon-exclamation-sign"></span> Filter Requirement Violations
+		</button>
+	</div>
+
+	<div class="clearfix"></div>
+
+	<div style="padding: 5px;">
+		<accordion close-others="false">
+			<accordion-group ng-repeat="scoredTechnology in ranking | orderBy:'totalScore':true track by $index"is-open="getTechnologyById(scoredTechnology.technologyId).status.open" ng-show="!reqViolationFilter || !scoredTechnology.anyRequirementViolated">
+
+				{{ technology = getTechnologyById(scoredTechnology.technologyId); ""}}
+
+				<!-- Accordion Heading -->
+				<accordion-heading>
+					<div style="cursor: pointer;">
+						<span style="margin-right: 5px; color: #B43104;" ng-show="scoredTechnology.anyRequirementViolated"><span class="glyphicon glyphicon-exclamation-sign"></span></span> {{ technology.name }}
+						<span class="pull-right glyphicon" ng-class="{'glyphicon-chevron-up': technology.status.open, 'glyphicon-chevron-down': !technology.status.open}"></span>
+						<span class="pull-right" style="margin-right: 20px;">{{ scoredTechnology.totalScore }} Points</span>
+
+					</div>
+				</accordion-heading>
+
+				<!-- Accordion Body> -->
+				<div>
+					<div class="col-xs-12" ng-repeat="usc in userScoredCriteria" ng-init="previousCriterionId = userScoredCriteria[$index - 1].criterionId" style="border-bottom: 1px solid #bbb;">
+						<div ng-show="previousCriterionId !== usc.criterionId" style="font-weight: bold; padding-top: 15px; padding-bottom: 5px;">{{ getCriterionById(usc.criterionId).name }}</div>
+						<div>
+							<div class="pull-left">
+								{{ fragment = getFragementForUSC(scoredTechnology.technologyId, usc.criterionId, usc.criterionValueId); fragmentColor = (fragment === 3 ? '#088A08' : fragment === 2 ? '#DBA901' : fragment === 1 ? '#FF8000' : '#B43104');"" }}
+								<div ng-show="fragment >= 0" class="pull-left cpt-decision-ranking-dot cpt-decision-ranking-dot-value" style="background-color: {{ fragmentColor }};"></div>
+								<div ng-show="fragment === -1" class="pull-left" style="color: #B43104; margin-right: 5px; font-size: 9pt;">
+									<span class="glyphicon glyphicon-exclamation-sign"></span>
+								</div>
+								<span>{{ getCriterionValueByIds(usc.criterionId, usc.criterionValueId).name }}</span>
+							</div>
+							<span class="pull-right">
+								{{ getPointsForUSC(scoredTechnology.technologyId, usc.criterionId,
+								usc.criterionValueId) }} Points
+							</span>
+						</div>
+					</div>
+				</div>
+				
+			</accordion-group>
+		</accordion>
+	</div>
+
+</div>

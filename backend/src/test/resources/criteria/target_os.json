@@ -1,0 +1,25 @@
+{
+	"id": "target_os",
+	"name": "Target platform",
+	"values":  [
+		{"id": "android", "name": "Android", "scoreType": ["strong", "rateable"]},
+		{"id": "ios", "name": "iOS", "scoreType": ["strong", "rateable"]},
+		{"id": "blackberry", "name": "BlackBerry", "scoreType": ["strong", "rateable"]},
+		{"id": "windows_phone", "name": "Windows Phone", "scoreType": ["strong", "rateable"]},
+		{"id": "symbian", "name": "Symbian", "scoreType": ["strong", "rateable"]},
+		{"id": "tizen", "name": "Tizen", "scoreType": ["strong", "rateable"]},
+		{"id": "ubuntu_phones", "name": "Ubuntu for phones", "scoreType": ["strong", "rateable"]},
+		{"id": "bada", "name": "Bada", "scoreType": ["strong", "rateable"]},
+		{"id": "webos", "name": "WebOS", "scoreType": ["strong", "rateable"]},
+		{"id": "firefox_os", "name": "Firefox OS", "scoreType": ["strong", "rateable"]},
+		{"id": "windows_desktop", "name": "Windows (Desktop)", "scoreType": ["strong", "rateable"]},
+		{"id": "windows_app", "name": "Windows (App)", "scoreType": ["strong", "rateable"]},
+		{"id": "mac_os_x_desktop", "name": "Mac OS X (Desktop)", "scoreType": ["strong", "rateable"]},
+		{"id": "mac_os_x_app", "name": "Mac OS X (App)", "scoreType": ["strong", "rateable"]},
+		{"id": "linux_desktop", "name": "Linux (Desktop)", "scoreType": ["strong", "rateable"]},
+		{"id": "linux_app", "name": "Linux (App)", "scoreType": ["strong", "rateable"]},
+		{"id": "website_classic", "name": "Website (Classic)", "scoreType": ["strong", "rateable"]},
+		{"id": "website_mobile", "name": "Website (Mobile)", "scoreType": ["strong", "rateable"]},
+		{"id": "website_responsive", "name": "Website (Responsive)", "scoreType": ["strong", "rateable"]}
+	]
+}

@@ -1,0 +1,143 @@
+<div class="cpt-decision-container pull-left" ng-repeat="criterion in criteria" ng-if="criterion.pageNumber === currentPage" style="margin-bottom: 75px;">
+
+	<div class="cpt-decision-title">
+		<span class="cpt-decision-title-text">{{ criterion.name }}</span>
+		<div style="padding-top: 5px;">{{ criterion.description }}</div>
+	</div>
+
+	<!-- Progress bar and buttons -->
+	<div
+		style="padding: 10px; padding-bottom: 15px; background-color: #fff; border-bottom: 1px solid #2E9AFE">
+
+		<div class="pull-left">
+			<button class="btn btn-info btn-xs" ng-click="previousPage()">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+			</button>
+		</div>
+
+		<div
+			style="margin-bottom: -10px; margin-left: 30px; margin-right: 30px;">
+			<progressbar value="currentPage + 1"
+				class="progress-striped" type="info"
+				style="background-color: #ccc; height: 22px;" max="totalCriteria">
+				<span style="color: black; white-space: nowrap;"></span>{{ currentPage + 1 }}
+			/ {{ totalCriteria }}
+			</progressbar>
+		</div>
+
+
+		<div class="pull-right" style="margin-top: -32px;">
+			<button class="btn btn-info btn-xs" ng-click="nextPage()">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+			</button>
+		</div>
+		
+		<div class="clearfix"></div>
+		
+		<!-- Tool bar -->
+		<div class="row cpt-decision-toolbar">
+			<div class="col-xs-6">
+				<button class="btn btn-default btn-md" ng-click="toggleCheckAll()">
+					<span ng-show="allChecked" class="glyphicon glyphicon-check"></span>
+					<span ng-show="allChecked">Uncheck all</span><span
+						ng-show="!allChecked" class="glyphicon glyphicon-unchecked"></span>
+					<span ng-show="!allChecked">Check all</span>
+				</button>
+			</div>
+
+			<div
+				class="col-xs-6 input-group">
+				<input type="text" ng-model="visibleCriterionValueFilterValue"
+					placeholder="Search" class="form-control"> <span
+					class="input-group-btn">
+					<button class="btn btn-default" type="button"
+						ng-click="visibleCriterionValueFilterValue = ''">
+						<span class="glyphicon glyphicon-remove"></span>
+					</button>
+				</span>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+
+	<div class="cpt-decision-content-criteria-container">
+
+		<!-- Criterion Values -->
+		<div
+			ng-repeat="criterionValue in criterion.values | filter:visibleCriterionValueFilterValue">
+			<button class="btn btn-default btn-block btn-md"
+				style="padding: 10px;"
+				ng-class="{'btn-success': criterionValue.usc !== undefined}"
+				ng-click="toggleUserScoredCriterion(criterion, criterionValue)">
+				<div class="pull-left">
+					<span
+						ng-show="criterionValue.usc !== undefined"
+						class="glyphicon glyphicon-check"></span> <span
+						ng-show="criterionValue.usc === undefined"
+						class="glyphicon glyphicon-unchecked"></span> {{
+					criterionValue.name }}
+				</div>
+			</button>
+			<div
+				ng-show="criterionValue.usc !== undefined">
+
+				<form class="form-horizontal">
+					<fieldset>
+						<div
+							ng-show="criterionValue.scoreType.indexOf('strong') > -1 && criterionValue.scoreType.indexOf('rateable') > -1" style="padding-top: 5px;">
+
+							<div class="btn-group btn-group-justified">
+								<label class="btn btn-default" ng-class="{'cpt-decision-content-button-active': criterionValue.usc.strongValue}" ng-model="criterionValue.usc.strongValue" btn-radio="true">Required</label>
+								<label class="btn btn-default" ng-class="{'cpt-decision-content-button-active': !criterionValue.usc.strongValue}" ng-model="criterionValue.usc.strongValue" btn-radio="false">Optional with severity:<br>
+									<rating ng-model="criterionValue.usc.ratedValue" max="5" style="font-size: 18pt;"></rating>
+								</label>
+							</div>
+						</div>
+						<div
+							ng-show="criterionValue.scoreType.indexOf('strong') == -1"
+							style="padding-top: 10px; padding-left: 5px;">
+							<div class="pull-left">
+								<rating
+								ng-model="criterionValue.usc.ratedValue"
+								max="5" on-hover="hoveringOver(value)" style="font-size: 20pt;"></rating>
+							</div>
+							<div class="pull-left" style="padding: 6px 0 0 5px; font-size: 12pt;">(
+								<span
+									ng-show="criterionValue.usc.ratedValue == 1">Unimportant</span>
+								<span
+									ng-show="criterionValue.usc.ratedValue == 2">Less
+									important</span> <span
+									ng-show="criterionValue.usc.ratedValue == 3">Nice
+									to have</span> <span
+									ng-show="criterionValue.usc.ratedValue == 4">Important</span>
+								<span
+									ng-show="criterionValue.usc.ratedValue == 5">Very
+									important</span>
+								)
+							</div>
+							
+						</div>
+					</fieldset>
+				</form>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="cpt-decision-page-button-container">
+		<button
+			class="btn btn-default btn-md pull-right cpt-test-decision-tool-next-button"
+			ng-click="nextPage()">
+			{{currentPage === totalCriteria ? 'Calculate Ranking' : 'Next'}} <span
+				class="glyphicon glyphicon-chevron-right"></span>
+		</button>
+		<button
+			class="btn btn-default btn-md pull-left cpt-test-decision-tool-previous-button"
+			ng-click="previousPage()">
+			<span class="glyphicon glyphicon-chevron-left"></span> Previous
+		</button>
+	</div>
+
+</div>

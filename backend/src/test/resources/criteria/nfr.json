@@ -1,0 +1,14 @@
+{
+	"id": "nfr",
+	"name": "Non-functional requirements",
+	"values":  [
+		{"id": "graphic_performance", "name": "Graphic performance (2D/3D)", "scoreType": ["rateable"]},
+		{"id": "energy_efficiency", "name": "Energy efficiency", "scoreType": ["rateable"]},
+		{"id": "shared_codebase", "name": "Shared codebase (largest possible)", "scoreType": ["rateable"]},
+		{"id": "upwards_compatibility", "name": "Upwards compatibility", "scoreType": ["rateable"]},
+		{"id": "update_efficiency", "name": "Update efficiency", "scoreType": ["rateable"]},
+		{"id": "offline_capability", "name": "Offline capability", "scoreType": ["rateable"]},
+		{"id": "native_feeling", "name": "Native feeling", "scoreType": ["rateable"]},
+		{"id": "security", "name": "Security", "scoreType": ["rateable"]}
+	]
+}

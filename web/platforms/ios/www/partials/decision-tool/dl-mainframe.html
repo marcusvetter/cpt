@@ -1,0 +1,8 @@
+<!-- Space on the left site for large screens -->
+<div class="visible-sm visible-md visible-lg pull-left"
+	style="width: 80px; height: 1px; display: block;"></div>
+
+<!-- Include the partials depending on the state of the decision tool -->	
+<div ng-include="'partials/decision-tool/dl-startpage.html'" ng-show="state === 'STARTPAGE'"></div>
+<div ng-include="'partials/decision-tool/dl-wizzard.html'" ng-show="state === 'WIZZARD'" ng-controller="DTWizzardCtrl"></div>
+<div ng-include="'partials/decision-tool/dl-ranking.html'" ng-if="state === 'RANKING'" ng-controller="DTRankingCtrl"></div>

@@ -1,0 +1,55 @@
+.cpt-criterion-container {
+	border: 1px solid #bbb;
+	margin-bottom: 30px;
+	margin-top: 10px;
+	background-color: #eee;
+	box-shadow: 3px 3px 3px #bbb, -3px 3px 8px #bbb, 3px -3px 8px #bbb, -3px -3px 8px #bbb;
+	.cpt-criterion-title {
+		padding: 10px;
+		border-bottom: 1px solid @light-blue-border-color;
+		span {
+			font-size: 14pt;
+			font-weight: bold;
+		}
+	}
+
+	.cpt-criterion-content {
+		.cpt-criterion-content-row {
+			padding: 5px;
+			&:nth-child(even) {
+				background-color: #ddd;
+			}
+
+			&:nth-child(odd) {
+				background-color: #eee;
+			}
+
+			> div:nth-child(1) {
+				width: 300px;
+				font-weight: bold;
+			}
+			
+			.cpt-criterion-content-strong-rateable {
+				div {
+					display: inline-block;
+				}
+			}
+
+		}
+
+		.cpt-criterion-further-properties-row button {
+			-webkit-border-radius: 0 ! important;
+			-moz-border-radius: 0 ! important;
+			border-radius: 0 ! important;
+			padding: 5px;
+			.cpt-criterion-show-further-properties-icon {
+				padding: 7px 5px 3px 5px;
+			}
+
+			.cpt-criterion-show-further-properties , .cpt-criterion-hide-further-properties , .cpt-criterion-hide-further-properties-icon {
+				padding: 5px;
+			}
+		}
+	}
+}
+

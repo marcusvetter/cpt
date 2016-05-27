@@ -1,0 +1,21 @@
+{
+	"id": "device_access",
+	"name": "Device access",
+	"values":  [
+		{"id": "accelerometer", "name": "Accelerometer", "scoreType": ["strong", "rateable"]},
+		{"id": "barcode", "name": "Barcode", "scoreType": ["strong", "rateable"]},
+		{"id": "bluetooth", "name": "Bluetooth", "scoreType": ["strong", "rateable"]},
+		{"id": "camera", "name": "Compass", "scoreType": ["strong", "rateable"]},
+		{"id": "compass", "name": "Compass", "scoreType": ["strong", "rateable"]},
+		{"id": "connection_network", "name": "Connection and Network", "scoreType": ["strong", "rateable"]},
+		{"id": "contacts", "name": "Contacts", "scoreType": ["strong", "rateable"]},
+		{"id": "device", "name": "Device", "scoreType": ["strong", "rateable"]},
+		{"id": "file_storage", "name": "File and Storage", "scoreType": ["strong", "rateable"]},
+		{"id": "geolocation", "name": "Geolocation", "scoreType": ["strong", "rateable"]},
+		{"id": "media", "name": "Media", "scoreType": ["strong", "rateable"]},
+		{"id": "menu", "name": "Menu", "scoreType": ["strong", "rateable"]},
+		{"id": "nfc", "name": "NFC", "scoreType": ["strong", "rateable"]},
+		{"id": "notification", "name": "Notification", "scoreType": ["strong", "rateable"]},
+		{"id": "screen_rotation", "name": "Screen rotation", "scoreType": ["strong", "rateable"]}
+	]
+}

@@ -1,0 +1,13 @@
+{
+	"id": "tech_target_windows_phone_monetization_appstore_nfr_offline_4_native_1",
+	"properties": [
+		{"criterionId": "target_os", "strongValues": [{"id": "windows_phone"}]},
+		{"criterionId": "monetization", "strongValues": [{"id": "app_store_availablity"}]},
+		{"criterionId": "nfr", "ratedValues": [
+			{"id": "offline_capability",
+			"value": 4},
+			{"id": "native_feeling",
+			"value": 1}
+		]}
+	]
+}

@@ -1,0 +1,6 @@
+{
+	"id": "tech_android",
+	"properties": [
+		{"criterionId": "target_os", "strongValues": [{"id": "android"}]}
+	]
+}

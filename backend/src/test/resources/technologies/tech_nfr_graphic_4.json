@@ -1,0 +1,9 @@
+{
+	"id": "tech_nfr_graphic_4",
+	"properties": [
+		{"criterionId": "nfr", "ratedValues": [
+			{"id": "graphic_performance",
+			"value": 4}
+		]}	
+	]
+}

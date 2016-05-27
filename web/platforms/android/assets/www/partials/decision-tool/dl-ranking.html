@@ -1,0 +1,28 @@
+<div class="cpt-decision-container pull-left" style="margin-bottom: 75px;">
+
+	<div class="cpt-decision-title">
+		<span class="cpt-decision-title-text"><span style="margin-right: 5px;" class="glyphicon glyphicon-signal"></span>Ranking</span>
+	</div>
+
+	<div style="padding: 5px;">
+		<tabset>
+				<tab heading="List comparison" style="cursor: pointer;">
+					<div ng-include="'partials/decision-tool/dl-ranking-list.html'" ng-controller="DTRankingListCtrl" style="border: 1px solid #ccc; margin-top: -1px; background-color: #fff; padding: 5px;"></div>
+				</tab>
+				<tab heading="Graphical comparison" style="cursor: pointer;">
+					<div ng-include="'partials/decision-tool/dl-ranking-comparison.html'" ng-controller="DTRankingComparisonCtrl" style="border: 1px solid #ccc; margin-top: -1px; background-color: #fff; padding: 5px;"></div>
+				</tab>
+		</tabset>
+	</div>
+
+	<div class="cpt-decision-page-button-container">
+		<button
+			class="btn btn-default btn-md pull-left cpt-test-decision-tool-previous-button"
+			fast-click="changeStateTo('WIZZARD')">
+			<span class="glyphicon glyphicon-chevron-left"></span> Back to wizzard
+		</button>
+	</div>
+
+</div>
+
+<div ng-include="'partials/decision-tool/dl-ranking-dm.html'" ng-controller="DTRankingDMCtrl"></div>

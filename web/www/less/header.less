@@ -1,0 +1,66 @@
+// --------------------------------------------------
+// Mobile header
+// --------------------------------------------------
+.cpt-header-mobile {
+	background-color: @dark-gray-bg-color;
+	border-bottom: 3px solid @light-blue-border-color;
+	color: #ccc;
+	height: 50px;
+	font-size: 16pt;
+	.cpt-header-mobile-nav {
+		padding: 5px;
+		padding-right: 20px;
+	}
+
+	.cpt-header-mobile-menu-button {
+		> div {
+			width: 20px;
+			height: 3px;
+			background-color: #ccc;
+		}
+
+		> div:nth-child(1) , > div:nth-child(2) {
+			margin-bottom: 4px;
+		}
+	}
+
+	.cpt-header-title-space {
+		padding-left: 10px;
+	}
+}
+
+.cpt-header-title {
+	padding-top: 10px;
+}
+
+// --------------------------------------------------
+// Desktop header
+// --------------------------------------------------
+.cpt-header-desktop-nav {
+	background-color: @dark-gray-bg-color;
+	height: 56px;
+	border-bottom: 3px solid @light-blue-border-color;
+	.cpt-header-desktop-menu-button {
+		> div {
+			width: 20px;
+			height: 3px;
+			background-color: #ccc;
+		}
+
+		> div:nth-child(1) , > div:nth-child(2) {
+			margin-bottom: 4px;
+		}
+	}
+
+	.cpt-header-desktop-brand {
+		padding: 15px;
+		color: #666;
+		font-size: 12pt;
+		cursor: pointer;
+	}
+
+	.cpt-header-desktop-menu-container {
+		background-color: @dark-gray-bg-color;
+	}
+}
+

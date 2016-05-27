@@ -1,0 +1,56 @@
+@dark-gray-bg-color: #222;
+@light-blue-border-color: #2E9AFE;
+
+
+.cpt-body-bg {
+z-index: -1;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-image: url('../img/bg.png');
+	background-size: 150px 173px;
+	background-position: top left;
+}
+
+@import "header.less";
+@import "menu.less";
+@import "footer.less";
+
+.cpt-content {
+	padding: 15px;
+	
+	@import "technologies.less";
+	@import "criteria.less";
+	@import "decision-tool.less";
+	@import "profiling.less";
+
+}
+
+.cpt-content-desktop {
+	margin-top: 56px;
+}
+
+a {
+	color: #333;
+}
+
+.cpt-default-container {
+	border: 1px solid #bbb;
+	margin-bottom: 30px;
+	margin-top: 10px;
+	background-color: #eee;
+	box-shadow: 3px 3px 3px #bbb, -3px 3px 8px #bbb, 3px -3px 8px #bbb, -3px -3px 8px #bbb;
+	.cpt-default-container-title {
+		padding: 10px;
+		border-bottom: 1px solid @light-blue-border-color;
+		span {
+			font-size: 14pt;
+			font-weight: bold;
+		}
+	}
+	.cpt-default-container-content {
+		padding: 10px;
+	}
+}

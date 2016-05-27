@@ -1,0 +1,86 @@
+<!-- Space on the left site for large screens -->
+<div class="visible-md visible-lg pull-left"
+	style="width: 80px; height: 1px; display: block;"></div>
+
+<div class="pull-left" style="width: 100%; max-width: 800px; margin-bottom: 75px;">
+	<div class="cpt-profiling-container">
+		<div class="cpt-profiling-title">
+			<span>Profiling</span>
+			<span class="pull-right">
+				<button class="btn btn-default" ng-show="!showProfilingForm" ng-click="activateProfiling(true)" style="background-color: #2E9AFE; color: white;"><span class="glyphicon glyphicon-ok" style="margin-right: 4px; font-size: 10pt;"></span>Activate profiling</button>
+				<button class="btn btn-default" ng-show="showProfilingForm" ng-click="activateProfiling(false)" style="background-color: #2E9AFE; color: white;"><span class="glyphicon glyphicon-off" style="margin-right: 4px; font-size: 10pt;"></span>Deactivate profiling</button>
+			</span>
+		</div>
+		<div style="padding: 10px;" ng-show="!showProfilingForm">
+		<p>
+			This profiling feature enables you to customize all technologies and criteria.
+		</p>
+		<p>
+			<strong>Attention: This feature is currently available as a beta version. You have to work with JSON files to customize the technologies and criteria.</strong>
+		</p>
+		<p>
+			If you would like to test profiling just enable it in the right top corner and create a new profile. If you disable profiling the default profile will be loaded immediately.
+		</p>
+		</div>
+
+		<div style="padding: 10px;" ng-show="showProfilingForm">
+
+			<strong>Create a new profile</strong>
+
+			<form role="form">
+				<div class="row">
+					<div class="col-xs-3" style="padding: 5px;">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Profile name" ng-model="newProfileName">
+						</div>
+					</div>
+					<div class="col-xs-3" style="padding: 5px;">
+						<button type="submit" class="btn btn-block btn-default" ng-click="createNewProfile()"><span class="glyphicon glyphicon-plus" style="margin-right: 4px;"></span>Create new profile</button>
+					</div>
+					<div class="col-xs-3" style="padding: 5px; margin-top: 8px;">
+						<span ng-show="newProfileStatus === true" style="color: green;"><span class="glyphicon glyphicon-ok"></span> Succeed.</span>
+						<span ng-show="newProfileStatus === false" style="color: red;"><span class="glyphicon glyphicon-remove"></span> This profile exists already.</span>
+					</div>
+				</div>
+			</form>
+
+			<strong>or use an existing profile</strong>
+
+			<form role="form">
+				<div class="row">
+					<div class="col-xs-3" style="padding: 5px;">
+						<div class="form-group">
+							<input type="text" class="form-control"placeholder="Profile name" ng-model="profileNameInput">
+						</div>
+					</div>
+					<div class="col-xs-3" style="padding: 5px;">
+						<button type="submit" class="btn btn-block btn-default" ng-click="loadProfile(profileNameInput)"><span class="glyphicon glyphicon-save" style="margin-right: 4px;"></span>Download profile</button>
+					</div>
+					<div class="col-xs-3" style="padding: 5px;">
+						<button class="btn btn-default btn-block" ng-click="saveChanges()"><span class="glyphicon glyphicon-open" style="margin-right: 4px;"></span>Save & Upload changes</button>
+					</div>
+					<div class="col-xs-3" style="padding: 5px; margin-top: 8px;">
+						<span ng-show="downloadUploadStatus === true && profileNameInput !== ''" style="color: green;"><span class="glyphicon glyphicon-ok"></span> Succeed.</span>
+						<span ng-show="downloadUploadStatus === false" style="color: red;"><span class="glyphicon glyphicon-remove"></span> Failed.</span>
+					</div>
+				</div>
+			</form>
+
+			<div style="padding: 5px;" ng-show="profileName !== defaultProfileName">
+
+				<h4>Selected profile: {{ profileName }}</h4>
+
+				<tabset>
+						<tab heading="Technologies" style="cursor: pointer;">
+							<div style="border: 1px solid #ccc; margin-top: -1px; background-color: #fff; padding: 5px;" ng-controller="ProfilingTechnologiesCtrl" ng-include="'partials/profiling/profiling-technologies.html'">
+							</div>
+						</tab>
+						<tab heading="Criteria" style="cursor: pointer;">
+							<div style="border: 1px solid #ccc; margin-top: -1px; background-color: #fff; padding: 5px;" ng-controller="ProfilingCriteriaCtrl" ng-include="'partials/profiling/profiling-criteria.html'">
+							</div>
+						</tab>
+				</tabset>
+			</div>
+		</div>
+	</div>
+</div>

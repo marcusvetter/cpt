@@ -1,0 +1,56 @@
+
+<!-- Space on the left site for large screens -->
+<div class="visible-sm visible-md visible-lg pull-left"
+	style="width: 80px; height: 1px; display: block;"></div>
+
+<div class="pull-left" style="width: 100%; max-width: 600px; margin-bottom: 50px;">
+	<div ng-repeat="criterion in criteria" class="cpt-criterion-container">
+		<div class="cpt-criterion-title">
+			<span>{{ criterion.name }}</span>
+		</div>
+
+		<div class="cpt-criterion-content">
+
+			<div class="row cpt-criterion-further-properties-row">
+				<div class="col-xs-12">
+					<button class="btn btn-block btn-default"
+						ng-click="toggleDetails(criterion)">
+						<span ng-show="!criterion.showDetails"
+							class="pull-left glyphicon glyphicon-chevron-down cpt-criterion-show-further-properties-icon"></span>
+						<span ng-show="!criterion.showDetails"
+							class="pull-left cpt-criterion-show-further-properties">Show
+							values</span> <span ng-show="criterion.showDetails"
+							class="pull-left glyphicon glyphicon-chevron-up cpt-criterion-hide-further-properties-icon"></span>
+						<span ng-show="criterion.showDetails"
+							class="pull-left cpt-criterion-hide-further-properties">Hide
+							values</span>
+					</button>
+				</div>
+			</div>
+
+			<div class="cpt-criterion-content-row"
+				ng-repeat="value in criterion.values"
+				ng-if="criterion.showDetails">
+				<div>{{ value.name }}:</div>
+				<div class="cpt-criterion-content-strong-rateable">
+					<div ng-show="value.scoreType.indexOf('strong') > -1">
+						Strong
+						<div>
+							( <input type="radio" checked> Required )
+						</div>
+					</div>
+					<div ng-show="value.scoreType.length > 1">and</div>
+					<div ng-show="value.scoreType.indexOf('rateable') > -1">
+						Rateable
+						<div>
+							(
+							<rating ng-model="rateTemplate" max="5" readonly="true"></rating>
+							)
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

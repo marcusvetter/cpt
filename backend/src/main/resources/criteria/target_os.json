@@ -1,0 +1,22 @@
+{
+	"id": "target_os",
+	"name": "Target platform",
+	"sort": 1,
+	"description": "Please select your target platform.",
+	"values":  [
+		{"id": "android", "name": "Android", "scoreType": ["strong", "rateable"]},
+		{"id": "ios", "name": "iOS", "scoreType": ["strong", "rateable"]},
+		{"id": "blackberry", "name": "BlackBerry", "scoreType": ["strong", "rateable"]},
+		{"id": "windows_phone", "name": "Windows Phone", "scoreType": ["strong", "rateable"]},
+		{"id": "symbian", "name": "Symbian", "scoreType": ["strong", "rateable"]},
+		{"id": "tizen", "name": "Tizen", "scoreType": ["strong", "rateable"]},
+		{"id": "ubuntu_phones", "name": "Ubuntu for phones", "scoreType": ["strong", "rateable"]},
+		{"id": "bada", "name": "Bada", "scoreType": ["strong", "rateable"]},
+		{"id": "web_os", "name": "WebOS", "scoreType": ["strong", "rateable"]},
+		{"id": "firefox_os", "name": "Firefox OS", "scoreType": ["strong", "rateable"]},
+		{"id": "windows", "name": "Windows", "scoreType": ["strong", "rateable"]},
+		{"id": "mac_os_x", "name": "Mac OS X", "scoreType": ["strong", "rateable"]},
+		{"id": "linux", "name": "Linux", "scoreType": ["strong", "rateable"]},
+		{"id": "website", "name": "Website", "scoreType": ["strong", "rateable"]}
+	]
+}
