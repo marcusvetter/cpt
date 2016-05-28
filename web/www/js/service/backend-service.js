@@ -1,7 +1,7 @@
 cptApp.factory('backendService', ['$http',
 	function ($http) {
 
-		var baseUrl = "http://cross-platform.org/api/";
+		var baseUrl = "/api/";
 
 		return {
 			// Get all technologies
