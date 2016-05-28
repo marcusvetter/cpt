@@ -26,8 +26,8 @@ public class ScoreController {
 		this.defaultScoreEngine = new ScoreEngine(defaultDataModel);
 	}
 
-	@RequestMapping(value="/api/ranking/{profileName}", method=RequestMethod.POST)
-	public @ResponseBody List<ScoredTechnology> ranking(@PathVariable("profileName") String profileName, 
+	@RequestMapping(value="/ranking/{profileName}", method=RequestMethod.POST)
+	public @ResponseBody List<ScoredTechnology> ranking(@PathVariable("profileName") String profileName,
 			@RequestBody List<UserScoredCriterion> userScoredCriteria) {
 		if (DBConnector.DEFAULT_PROFILE_NAME.equals(profileName)) {
 			return this.defaultScoreEngine.score(userScoredCriteria);

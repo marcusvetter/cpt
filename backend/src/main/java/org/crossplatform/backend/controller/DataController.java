@@ -28,7 +28,7 @@ public class DataController {
 		return "Welcome to the cpt api!";
 	}
 
-	@RequestMapping("/api/technologies/{profileName}")
+	@RequestMapping("/technologies/{profileName}")
 	public @ResponseBody List<Technology> technologies(
 			@PathVariable("profileName") String profileName) {
 		if (DBConnector.DEFAULT_PROFILE_NAME.equals(profileName)) {
@@ -37,8 +37,8 @@ public class DataController {
 			return ProfiledDataModelFactory.getProfiledDataModel(profileName).getTechnologies();
 		}
 	}
-	
-	@RequestMapping(value = "/api/technologies/{profileName}", method = RequestMethod.POST, headers = {"Content-type=application/json"})
+
+	@RequestMapping(value = "/technologies/{profileName}", method = RequestMethod.POST, headers = {"Content-type=application/json"})
 	@ResponseBody
 	public boolean updateTechnologies(@PathVariable("profileName") String profileName, @RequestBody List<Technology> technologies) {
 		if (DBConnector.DEFAULT_PROFILE_NAME.equals(profileName)) {
@@ -48,7 +48,7 @@ public class DataController {
 		}
 	}
 
-	@RequestMapping("/api/criteria/{profileName}")
+	@RequestMapping("/criteria/{profileName}")
 	public @ResponseBody List<Criterion> criteria(@PathVariable("profileName") String profileName) {
 		if (DBConnector.DEFAULT_PROFILE_NAME.equals(profileName)) {
 			return this.defaultDataModel.getCriteria();
@@ -56,8 +56,8 @@ public class DataController {
 			return ProfiledDataModelFactory.getProfiledDataModel(profileName).getCriteria();
 		}
 	}
-	
-	@RequestMapping(value = "/api/criteria/{profileName}", method = RequestMethod.POST, headers = {"Content-type=application/json"})
+
+	@RequestMapping(value = "/criteria/{profileName}", method = RequestMethod.POST, headers = {"Content-type=application/json"})
 	@ResponseBody
 	public boolean updateCriteria(@PathVariable("profileName") String profileName, @RequestBody List<Criterion> criteria) {
 		if (DBConnector.DEFAULT_PROFILE_NAME.equals(profileName)) {

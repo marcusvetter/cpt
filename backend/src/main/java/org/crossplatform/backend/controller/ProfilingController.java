@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class ProfilingController {
-	
-    @RequestMapping(value = "/api/profiling/{profileName}", method = RequestMethod.PUT)
+
+    @RequestMapping(value = "/profiling/{profileName}", method = RequestMethod.PUT)
     public @ResponseBody boolean index(@PathVariable("profileName") String profileName) {
     	if (null == profileName) {
     		profileName = DBConnector.DEFAULT_PROFILE_NAME;
